@@ -1,0 +1,7 @@
+name: Welcome Workflow
+on: [push]
+jobs:
+  welcome:
+    runs-on: self-hosted
+    steps:
+      - run: echo "Hello from welcome.yml workflow"
