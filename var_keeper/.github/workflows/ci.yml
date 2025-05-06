@@ -1,0 +1,7 @@
+name: CI
+on: [push]
+jobs:
+  welcome:
+    runs-on: self-hosted
+    steps:
+      - run: echo "Hello NEW workflow"
