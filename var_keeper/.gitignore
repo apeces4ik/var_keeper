@@ -1,0 +1,25 @@
+# Временные файлы Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Файлы окружения
+.env
+.venv
+env/
+venv/
+
+# Логи и базы данных
+*.log
+*.sqlite
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Файлы сборки и дистрибуции
+build/
+dist/
+*.egg-info/
