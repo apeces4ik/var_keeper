@@ -1,0 +1,27 @@
+name: Context testing
+on: push
+jobs:
+  dump_contexts:
+    runs-on: self-hosted
+    steps:
+      - name: Dump GitHub context
+        id: github_context_step
+        run: echo '${{ toJSON(github) }}'
+      - name: Dump runner context
+        run: echo '${{ toJSON(runner) }}'
+      - name: Dump job context
+        run: echo '${{ toJSON(job) }}'
+      - name: Dump steps context
+        run: echo '${{ toJSON(steps) }}'
+      - name: Dump Secrets context
+        run: echo '${{ toJSON(secrets) }}'
+      - name: Dump strategy context
+        run: echo '${{ toJSON(strategy) }}'
+      - name: Dump matrix context
+        run: echo '${{ toJSON(matrix) }}'
+      - name: Dump environments variable
+        run: env
+      - name: Present working directory
+        run: pwd
+      - name: User info
+        run: id

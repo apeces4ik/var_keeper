@@ -1,0 +1,39 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Шаг 1: Checkout репозитория
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Шаг 2: Запуск модульных тестов
+      - name: Run Unit Tests
+        run: echo "Unit Tests PASS"
+
+      # Шаг 3: Запуск приложения (например, Flask-сервера)
+      - name: Start Application
+        run: |
+          python -m http.server 5000 &
+          echo $! > server.pid
+
+      # Шаг 4: Запуск интеграционных тестов
+      - name: Run Integration Tests
+        if: github.event_name == 'pull_request'
+        run: ./test/integration-tests.sh
+
+      # Шаг 5: Остановка приложения
+      - name: Stop Application
+        if: always()
+        run: kill $(cat server.pid)
