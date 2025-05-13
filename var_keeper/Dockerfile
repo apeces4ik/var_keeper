@@ -1,5 +1,5 @@
 # Базовый образ Python
-FROM python:3.13.3
+FROM python:3.9-slim
 
 # Установка рабочей директории
 WORKDIR /app
@@ -8,7 +8,7 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Установка зависимостей
-RUN pip3o install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Копирование исходного кода
 COPY src/app/ .
